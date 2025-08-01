@@ -10,13 +10,15 @@ import {
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
-// Lazy‑load typewriter to keep initial bundle small
-const Typewriter = lazy(() => import("react-simple-typewriter").then(mod => ({ default: mod.Typewriter })));
+// Lazy‑load the typewriter to keep the initial bundle small
+const Typewriter = lazy(() =>
+    import("react-simple-typewriter").then(mod => ({ default: mod.Typewriter }))
+);
 
 /* ----------------------------- Chat Context ----------------------------- */
 const ChatContext = createContext();
 const initialState = { messages: [], step: -1 };
-function chatReducer(state, action) {
+const chatReducer = (state, action) => {
     switch (action.type) {
         case "START":
             return { ...state, step: 0, messages: [{ role: "user", text: "Who are you?" }] };
@@ -25,7 +27,7 @@ function chatReducer(state, action) {
         default:
             return state;
     }
-}
+};
 
 /* --------------------------- Static data --------------------------- */
 const introLines = [
@@ -39,6 +41,7 @@ const tagList = ["AI", "Developer", "React", "42 Style", "SaaS Builder"];
 /* -------------------------- Reusable components -------------------------- */
 const AvatarHeader = memo(() => (
     <div style={{ position: "relative", marginBottom: "1.5em" }}>
+        {/* Subtle glowing effect behind avatar (gradient) */}
         <div
             style={{
                 position: "absolute",
@@ -52,6 +55,7 @@ const AvatarHeader = memo(() => (
                 zIndex: 0,
             }}
         />
+        {/* 3D Memoji-style Avatar */}
         <Image
             src="/assets/avatar-memoji.png"
             size="small"
@@ -66,10 +70,10 @@ const AvatarHeader = memo(() => (
     </div>
 ));
 
-function IntroSection() {
+const IntroSection = () => {
     const { state, dispatch } = React.useContext(ChatContext);
 
-    // auto advance steps
+    // Automatically advance to next intro line after a timeout
     useEffect(() => {
         if (state.step === -1 || state.step >= introLines.length - 1) return;
         const timer = setTimeout(() => dispatch({ type: "NEXT_STEP" }), 2200);
@@ -78,6 +82,7 @@ function IntroSection() {
 
     return (
         <div style={{ minHeight: 280 }}>
+            {/* Step 0: Display the initial user question */}
             {state.step >= 0 && (
                 <Suspense fallback={<p style={{ fontWeight: 600 }}>You: Who are you?</p>}>
                     <p style={{ fontWeight: 600, marginTop: "0.5em", minHeight: 32 }}>
@@ -85,7 +90,7 @@ function IntroSection() {
                     </p>
                 </Suspense>
             )}
-
+            {/* Step 1: Display the first intro answer */}
             {state.step >= 1 && (
                 <Suspense fallback={<p style={{ marginTop: "1.2em" }}>{introLines[1]}</p>}>
                     <p style={{ marginTop: "1.2em", minHeight: 48 }}>
@@ -93,7 +98,7 @@ function IntroSection() {
                     </p>
                 </Suspense>
             )}
-
+            {/* Step 2: Display list of tags */}
             {state.step >= 2 && (
                 <div style={{ marginTop: "1.5em" }}>
                     {tagList.map(tag => (
@@ -103,7 +108,7 @@ function IntroSection() {
                     ))}
                 </div>
             )}
-
+            {/* Step 3: Display the final intro line */}
             {state.step >= 3 && (
                 <Suspense fallback={<p style={{ color: "#777" }}>{introLines[3]}</p>}>
                     <p style={{ color: "#777", marginTop: "2em", minHeight: 48 }}>
@@ -113,9 +118,9 @@ function IntroSection() {
             )}
         </div>
     );
-}
+};
 
-function ControlSegment() {
+const ControlSegment = () => {
     const { state, dispatch } = React.useContext(ChatContext);
     return (
         <Segment
@@ -132,6 +137,7 @@ function ControlSegment() {
             }}
         >
             <Container textAlign="center">
+                {/* Main control buttons */}
                 <div
                     style={{
                         marginBottom: "1.5em",
@@ -161,7 +167,7 @@ function ControlSegment() {
                     </Button>
                 </div>
 
-                {/* Input readonly to mirror user question */}
+                {/* Readonly input to mirror the "user question" */}
                 <div
                     style={{
                         position: "relative",
@@ -204,10 +210,10 @@ function ControlSegment() {
             </Container>
         </Segment>
     );
-}
+};
 
 /* ------------------------------ Main App ------------------------------ */
-export default function App() {
+const App = () => {
     const [state, dispatch] = useReducer(chatReducer, initialState);
 
     return (
@@ -221,4 +227,6 @@ export default function App() {
             </div>
         </ChatContext.Provider>
     );
-}
+};
+
+export default App;
