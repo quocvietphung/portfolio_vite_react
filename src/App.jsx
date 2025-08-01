@@ -1,152 +1,97 @@
 import React from "react";
 import {
-  Avatar,
-  Box,
+  Container,
+  Header,
+  Segment,
+  Image,
+  Icon,
+  Input,
   Button,
-  CssBaseline,
-  IconButton,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-  ThemeProvider,
-  createTheme,
-  Chip
-} from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-
-const theme = createTheme({
-  typography: {
-    fontFamily: "Segoe UI, sans-serif"
-  }
-});
+  Label,
+  Divider
+} from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          backgroundColor: "#f9fafb",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "start",
-          py: 6,
-          px: 2
-        }}
-      >
-        <Avatar
+    <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", display: "flex", flexDirection: "column" }}>
+      <Container text textAlign="center" style={{ paddingTop: "4em", paddingBottom: "6em" }}>
+        <Image
           src="https://avatars.githubusercontent.com/u/9919?v=4"
-          sx={{
-            width: 160,
-            height: 160,
-            borderRadius: 3,
-            mb: 2
-          }}
+          size="small"
+          circular
+          centered
+          style={{ marginBottom: "1em" }}
         />
-        <Typography variant="h4" fontWeight="bold">
+        <Header as="h1" style={{ fontWeight: "bold" }}>
           Viet Phung
-        </Typography>
-        <Typography color="text.secondary" mb={3}>
+        </Header>
+        <Header.Subheader style={{ color: "gray", marginBottom: "2em" }}>
           AI Consultant • Data Engineer • Softwareentwickler
-        </Typography>
-
-        <Typography variant="body1" textAlign="center" maxWidth="600px" mb={2}>
-          Hey 👋<br />
-          I'm Viet, a developer specializing in AI, currently learning at Alfatraining.
+        </Header.Subheader>
+        <p>
+          Hey 👋 I'm Viet, a developer specializing in AI, currently learning at Alfatraining.
           I’m passionate about AI, NLP, and SaaS product building.
-        </Typography>
-
-        <Stack
-          direction="row"
-          spacing={1}
-          justifyContent="center"
-          flexWrap="wrap"
-          mb={2}
-        >
-          {["AI", "Developer", "React", "42 Style", "SaaS Builder"].map((label) => (
-            <Chip key={label} label={label} variant="outlined" />
+        </p>
+        <div style={{ marginTop: "1.5em" }}>
+          {["AI", "Developer", "React", "42 Style", "SaaS Builder"].map((tag) => (
+            <Label key={tag} basic color="blue" style={{ margin: "0.3em" }}>
+              {tag}
+            </Label>
           ))}
-        </Stack>
+        </div>
+        <p style={{ color: "#777", marginTop: "2em" }}>
+          Before diving into tech, I worked as a software engineer and explored AI solutions
+          with Python, ML, and cloud tools. I love exploring product ideas and building real-world solutions.
+        </p>
+      </Container>
 
-        <Typography textAlign="center" color="text.secondary" maxWidth="700px">
-          Before diving into tech, I worked as a software engineer and explored AI solutions with Python, ML, and cloud tools.
-          I love exploring product ideas and building real-world solutions.
-        </Typography>
-      </Box>
-
-      <Paper
-        elevation={0}
-        sx={{
-          position: "fixed",
-          bottom: "100px",
-          left: 0,
-          width: "100%",
-          py: 2,
-          px: 4,
-          borderTop: "1px solid #eee",
-          borderRadius: "16px 16px 0 0",
-          zIndex: 1300,
-          backgroundColor: "transparent"
+      <Segment
+        style={{
+          backgroundColor: "#fff",
+          padding: "2.5em 2em",
+          marginTop: "4em",
+          borderRadius: "24px",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.08)",
+          maxWidth: "800px",
+          width: "90%",
+          marginLeft: "auto",
+          marginRight: "auto"
         }}
       >
-        <Stack spacing={2}>
-          <Stack
-            direction="row"
-            spacing={1}
-            justifyContent="center"
-            flexWrap="wrap"
-          >
-            {["👤 Me", "📁 Projects", "💡 Skills", "🎮 Fun", "📞 Contact", "❓"].map((label) => (
+        <Container textAlign="center">
+          <div style={{ marginBottom: "1em", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.5em" }}>
+            {["Me", "Projects", "Skills", "Fun", "Contact", "?"].map((item) => (
               <Button
-                key={label}
-                size="small"
-                variant="outlined"
-                sx={{ borderRadius: "999px", textTransform: "none" }}
+                basic
+                circular
+                key={item}
+                content={item}
+                icon
+                labelPosition="left"
               >
-                {label}
+                {item}
               </Button>
             ))}
-          </Stack>
+          </div>
 
-          <Stack direction="row" spacing={2} alignItems="center" justifyContent="center" px={{ xs: 1, sm: 4 }}>
-            <TextField
-              fullWidth
-              placeholder="Ask me anything"
-              size="small"
-              sx={{
-                maxWidth: "700px",
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: "999px",
-                  backgroundColor: "#f1f3f5",
-                  paddingRight: "12px"
-                },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  borderRadius: "999px"
-                }
-              }}
-            />
-            <IconButton
-              sx={{
-                backgroundColor: "#1976d2",
-                color: "#fff",
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                ml: 1,
-                "&:hover": {
-                  backgroundColor: "#1565c0"
-                }
-              }}
-            >
-              <SendIcon fontSize="small" />
-            </IconButton>
-          </Stack>
-        </Stack>
-      </Paper>
-    </ThemeProvider>
+          <Input
+            iconPosition="right"
+            placeholder="Ask me anything..."
+            style={{
+              borderRadius: "999px",
+              padding: "0.75em 1.25em",
+              maxWidth: "600px",
+              width: "100%",
+              background: "#f1f3f5"
+            }}
+          >
+            <input style={{ borderRadius: "999px", backgroundColor: "#f1f3f5" }} />
+            <Icon name="send" circular color="blue" />
+          </Input>
+        </Container>
+      </Segment>
+    </div>
   );
 };
 
