@@ -119,6 +119,77 @@ const App = () => {
           um meine Fähigkeiten in <strong>Deep Learning, NLP, Data Science</strong> und Cloud (Azure) weiter auszubauen.
         </p>
       </div>
+      {/* Quick Questions + Chat Input */}
+      <div style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        backgroundColor: "#fff",
+        boxShadow: "0 -2px 12px rgba(0,0,0,0.05)",
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        zIndex: 100
+      }}>
+        <div style={{
+          display: "flex",
+          gap: "12px",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          marginBottom: "12px"
+        }}>
+          {["👤 Me", "📁 Projects", "🛠️ Skills", "🎮 Fun", "📞 Contact", "❓"].map((item, idx) => (
+            <button
+              key={idx}
+              style={{
+                padding: "8px 16px",
+                borderRadius: "20px",
+                border: "1px solid #ccc",
+                backgroundColor: "#f9f9f9",
+                fontSize: "14px",
+                cursor: "pointer"
+              }}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          maxWidth: "600px",
+          backgroundColor: "#f1f3f5",
+          borderRadius: "999px",
+          padding: "8px 16px"
+        }}>
+          <input
+            type="text"
+            placeholder="Ask me anything"
+            style={{
+              flex: 1,
+              border: "none",
+              outline: "none",
+              backgroundColor: "transparent",
+              fontSize: "15px"
+            }}
+          />
+          <button style={{
+            backgroundColor: "#4c8bf5",
+            color: "#fff",
+            border: "none",
+            borderRadius: "50%",
+            width: "36px",
+            height: "36px",
+            cursor: "pointer"
+          }}>
+            ↑
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
