@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function App() {
+  const [input, setInput] = useState("");
+  const [showAboutMe, setShowAboutMe] = useState(false);
+
   return (
     <main
       style={{
@@ -74,6 +77,22 @@ export default function App() {
         </a>
       </nav>
 
+      {showAboutMe && (
+        <section
+          style={{
+            marginTop: "3rem",
+            backgroundColor: "#f1f8e9",
+            padding: "2rem",
+            borderRadius: "16px",
+            maxWidth: "720px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.05)"
+          }}
+        >
+          <h2 style={{ color: "#33691e", marginBottom: "1rem" }}>👤 About Me</h2>
+          <p><strong>Who are you?</strong> — I'm Viet Phung, an AI Engineer driven by curiosity and a love for solving complex problems with scalable ML solutions.</p>
+        </section>
+      )}
+
       <div
         style={{
           marginTop: "3rem",
@@ -91,6 +110,33 @@ export default function App() {
         <a href="https://github.com/vietphung" target="_blank" style={{ color: "#000000" }}>
           🐙
         </a>
+      </div>
+
+      <div style={{ marginTop: "3rem", display: "flex", gap: "1rem" }}>
+        <input
+          type="text"
+          placeholder="Ask me something..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          style={{ padding: "0.5rem", fontSize: "1rem", borderRadius: "4px" }}
+        />
+        <button
+          onClick={() => {
+            if (input.trim().toLowerCase() === "who are you") {
+              setShowAboutMe(true);
+            }
+          }}
+          style={{
+            backgroundColor: "#1976d2",
+            color: "#fff",
+            border: "none",
+            padding: "0.5rem 1rem",
+            borderRadius: "4px",
+            cursor: "pointer"
+          }}
+        >
+          Ask
+        </button>
       </div>
     </main>
   )
