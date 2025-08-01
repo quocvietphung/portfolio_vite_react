@@ -77,13 +77,13 @@ const App = () => {
                 elevation={3}
                 sx={{
                     position: "fixed",
-                    bottom: 0,
+                    bottom: "20px",
                     left: 0,
                     width: "100%",
                     py: 2,
-                    px: 3,
-                    backgroundColor: "#fff",
+                    px: 4,
                     borderTop: "1px solid #eee",
+                    borderRadius: "16px 16px 0 0",
                     zIndex: 1300
                 }}
             >
@@ -112,15 +112,26 @@ const App = () => {
                             fullWidth
                             placeholder="Ask me anything"
                             size="small"
+                            variant="outlined"
                             sx={{
-                                backgroundColor: "#f1f3f5",
-                                borderRadius: "999px"
+                                "& .MuiOutlinedInput-root": {
+                                    borderRadius: "999px",
+                                    backgroundColor: "#f1f3f5",
+                                    paddingRight: "12px"
+                                },
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderRadius: "999px"
+                                }
                             }}
                         />
                         <IconButton
                             sx={{
                                 backgroundColor: "#1976d2",
                                 color: "#fff",
+                                width: 40,
+                                height: 40,
+                                borderRadius: "50%",
+                                ml: 1,
                                 "&:hover": {
                                     backgroundColor: "#1565c0"
                                 }
