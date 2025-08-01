@@ -46,51 +46,82 @@ const App = () => {
         </p>
       </Container>
 
-      <Segment
-        style={{
-          backgroundColor: "#fff",
-          padding: "2.5em 2em",
-          marginTop: "4em",
-          borderRadius: "24px",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.08)",
-          maxWidth: "800px",
-          width: "90%",
-          marginLeft: "auto",
-          marginRight: "auto"
-        }}
-      >
-        <Container textAlign="center">
-          <div style={{ marginBottom: "1em", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.5em" }}>
-            {["Me", "Projects", "Skills", "Fun", "Contact", "?"].map((item) => (
-              <Button
-                basic
-                circular
-                key={item}
-                content={item}
-                icon
-                labelPosition="left"
-              >
-                {item}
-              </Button>
-            ))}
-          </div>
-
-          <Input
-            iconPosition="right"
-            placeholder="Ask me anything..."
+        <Segment
             style={{
-              borderRadius: "999px",
-              padding: "0.75em 1.25em",
-              maxWidth: "600px",
-              width: "100%",
-              background: "#f1f3f5"
+                backgroundColor: "#ffffff",
+                padding: "2.5em 2em",
+                marginTop: "6em",
+                borderRadius: "32px",
+                boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+                maxWidth: "780px",
+                width: "90%",
+                marginLeft: "auto",
+                marginRight: "auto"
             }}
-          >
-            <input style={{ borderRadius: "999px", backgroundColor: "#f1f3f5" }} />
-            <Icon name="send" circular color="blue" />
-          </Input>
-        </Container>
-      </Segment>
+        >
+            <Container textAlign="center">
+                <div style={{
+                    marginBottom: "1.5em",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "0.75em"
+                }}>
+                    <Button icon labelPosition="left" basic circular color="teal">
+                        <Icon name="smile outline" /> Me
+                    </Button>
+                    <Button icon labelPosition="left" basic circular color="green">
+                        <Icon name="briefcase" /> Projects
+                    </Button>
+                    <Button icon labelPosition="left" basic circular color="violet">
+                        <Icon name="layer group" /> Skills
+                    </Button>
+                    <Button icon labelPosition="left" basic circular color="pink">
+                        <Icon name="magic" /> Fun
+                    </Button>
+                    <Button icon labelPosition="left" basic circular color="orange">
+                        <Icon name="address book outline" /> Contact
+                    </Button>
+                    <Button icon labelPosition="left" basic circular color="grey">
+                        <Icon name="ellipsis horizontal" />
+                    </Button>
+                </div>
+
+                <div style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#f1f3f5",
+                    borderRadius: "999px",
+                    padding: "0.75em 1.25em",
+                    maxWidth: "600px",
+                    width: "100%",
+                    margin: "0 auto"
+                }}>
+                    <Input
+                        placeholder="Ask me anything..."
+                        style={{
+                            border: "none",
+                            background: "transparent",
+                            flex: 1,
+                            marginRight: "0.5em"
+                        }}
+                    />
+                    <Button
+                        icon
+                        circular
+                        color="blue"
+                        style={{
+                            boxShadow: "none",
+                            minWidth: "40px",
+                            height: "40px"
+                        }}
+                    >
+                        <Icon name="arrow up" />
+                    </Button>
+                </div>
+            </Container>
+        </Segment>
     </div>
   );
 };
