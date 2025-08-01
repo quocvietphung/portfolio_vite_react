@@ -81,26 +81,6 @@ const App = () => {
         AI Consultant • Data Engineer • Softwareentwickler
       </p>
 
-      {/* Navigation */}
-      <div style={styles.nav}>
-        {["Über mich", "Projekte", "Skills", "Kontakt"].map((label, idx) => (
-          <button
-            key={idx}
-            style={styles.button}
-            onMouseOver={(e) => {
-              e.target.style.backgroundColor = "#e9ecef";
-              e.target.style.borderColor = "#999";
-            }}
-            onMouseOut={(e) => {
-              e.target.style.backgroundColor = "#fff";
-              e.target.style.borderColor = "#ccc";
-            }}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
       <div style={styles.introBox}>
         <h2 style={styles.introHeading}>
           👨‍💻 Über mich
