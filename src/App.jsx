@@ -94,11 +94,13 @@ const App = () => {
                         position: "relative",
                         backgroundColor: "#f1f3f5",
                         borderRadius: "999px",
-                        maxWidth: "600px",
+                        maxWidth: "720px",
+                        height: "64px",
                         margin: "0 auto",
                         display: "flex",
                         alignItems: "center",
-                        paddingRight: "52px"
+                        paddingRight: "60px",
+                        paddingLeft: "24px"
                     }}
                 >
                     <input
@@ -109,10 +111,10 @@ const App = () => {
                             border: "none",
                             outline: "none",
                             background: "transparent",
-                            padding: "0.75em 1.25em",
-                            borderRadius: "999px",
-                            fontSize: "1em",
-                            width: "100%"
+                            fontSize: "1.05em",
+                            padding: 0,
+                            height: "100%",
+                            lineHeight: "64px",
                         }}
                     />
                     <Button
@@ -121,12 +123,12 @@ const App = () => {
                         color="blue"
                         style={{
                             position: "absolute",
-                            right: "6px",
+                            right: "12px",
                             top: "50%",
                             transform: "translateY(-50%)",
-                            width: "36px",
-                            height: "36px",
-                            minWidth: "36px",
+                            width: "44px",
+                            height: "44px",
+                            minWidth: "44px",
                             boxShadow: "none"
                         }}
                     >
