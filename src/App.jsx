@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     Container,
     Header,
@@ -8,18 +8,38 @@ import {
     Button,
     Label
 } from "semantic-ui-react";
+import { Typewriter } from "react-simple-typewriter";
 import "semantic-ui-css/semantic.min.css";
 
-const App = () => {
-    const [showIntro, setShowIntro] = useState(false);
+const introLines = [
+    "You: Who are you?",
+    "Hey 👋 I'm Viet, a developer specializing in AI, currently learning at Alfatraining. I’m passionate about AI, NLP, and SaaS product building.",
+    "TAGS",  // sẽ render label
+    "Before diving into tech, I worked as a software engineer and explored AI solutions with Python, ML, and cloud tools. I love exploring product ideas and building real-world solutions."
+];
 
-    const handleButtonClick = () => {
-        setShowIntro(true);
+const tagList = ["AI", "Developer", "React", "42 Style", "SaaS Builder"];
+
+const App = () => {
+    const [step, setStep] = useState(-1);
+
+    // Khi click Me ➜ bắt đầu hiển thị từng dòng
+    const startIntro = () => {
+        if (step !== -1) return;
+        setStep(0);
     };
+
+    // Hiện từng dòng 1, sau khi gõ xong thì show dòng tiếp theo sau delay 1s
+    useEffect(() => {
+        if (step === -1 || step === introLines.length - 1) return;
+        // Thời gian đợi: mỗi dòng sẽ có typewriter (2s), sau đó đợi 1s mới show dòng tiếp theo
+        const timer = setTimeout(() => setStep(step + 1), 2000 + (step === 1 ? 800 : 0));
+        return () => clearTimeout(timer);
+    }, [step]);
 
     return (
         <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", display: "flex", flexDirection: "column" }}>
-            {/* PHẦN GIỚI THIỆU */}
+            {/* HEADER */}
             <Container text textAlign="center" style={{ paddingTop: "4em", paddingBottom: "6em" }}>
                 <Image
                     src="https://avatars.githubusercontent.com/u/9919?v=4"
@@ -28,47 +48,50 @@ const App = () => {
                     centered
                     style={{ marginBottom: "1em" }}
                 />
-                <Header as="h1" style={{ fontWeight: "bold" }}>
+                <Header as="h1" style={{ fontWeight: "800", letterSpacing: 1 }}>
                     Viet Phung
                 </Header>
-
-                <Header.Subheader style={{ color: "gray", marginBottom: "1em" }}>
+                <Header.Subheader style={{ color: "#5f6368", marginBottom: "1.2em" }}>
                     AI Consultant • Data Engineer • Softwareentwickler
                 </Header.Subheader>
 
-                {showIntro && (
-                    <>
-                        <p style={{ fontWeight: "bold", marginTop: "0.5em" }}>You: Who are you?</p>
-
-                        <p style={{ marginTop: "1em" }}>
-                            Hey 👋 I'm Viet, a developer specializing in AI, currently learning at Alfatraining.
-                            I’m passionate about AI, NLP, and SaaS product building.
+                {/* Từng dòng hiện ra như typewriter */}
+                <div style={{ minHeight: 280 }}>
+                    {step >= 0 &&
+                        <p style={{ fontWeight: 600, marginTop: "0.5em", minHeight: 32 }}>
+                            <Typewriter words={[introLines[0]]} loop={1} typeSpeed={40} cursor cursorStyle="|" />
                         </p>
-
+                    }
+                    {step >= 1 &&
+                        <p style={{ marginTop: "1.2em", minHeight: 48 }}>
+                            <Typewriter words={[introLines[1]]} loop={1} typeSpeed={30} cursor cursorStyle="|" />
+                        </p>
+                    }
+                    {step >= 2 &&
                         <div style={{ marginTop: "1.5em" }}>
-                            {["AI", "Developer", "React", "42 Style", "SaaS Builder"].map((tag) => (
+                            {tagList.map((tag) => (
                                 <Label key={tag} basic color="blue" style={{ margin: "0.3em" }}>
                                     {tag}
                                 </Label>
                             ))}
                         </div>
-
-                        <p style={{ color: "#777", marginTop: "2em" }}>
-                            Before diving into tech, I worked as a software engineer and explored AI solutions
-                            with Python, ML, and cloud tools. I love exploring product ideas and building real-world solutions.
+                    }
+                    {step >= 3 &&
+                        <p style={{ color: "#777", marginTop: "2em", minHeight: 48 }}>
+                            <Typewriter words={[introLines[3]]} loop={1} typeSpeed={28} cursor cursorStyle="|" />
                         </p>
-                    </>
-                )}
+                    }
+                </div>
             </Container>
 
-            {/* PHẦN SEGMENT GỐC BẠN YÊU CẦU */}
+            {/* CONTROL SEGMENT */}
             <Segment
                 style={{
                     backgroundColor: "#ffffff",
                     padding: "2.5em 2em",
                     marginTop: "6em",
                     borderRadius: "32px",
-                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.08)",
                     maxWidth: "780px",
                     width: "90%",
                     marginLeft: "auto",
@@ -85,7 +108,7 @@ const App = () => {
                             gap: "0.75em"
                         }}
                     >
-                        <Button icon labelPosition="left" basic circular color="teal" onClick={handleButtonClick}>
+                        <Button icon labelPosition="left" basic circular color="teal" onClick={startIntro}>
                             <Icon name="smile outline" /> Me
                         </Button>
                         <Button icon labelPosition="left" basic circular color="green">
@@ -132,7 +155,7 @@ const App = () => {
                                 height: "100%",
                                 lineHeight: "64px",
                             }}
-                            value={showIntro ? "Who are you?" : ""}
+                            value={step >= 0 ? "Who are you?" : ""}
                             readOnly
                         />
                         <Button
