@@ -60,13 +60,15 @@ const App = () => {
             }}
         >
             <Container textAlign="center">
-                <div style={{
-                    marginBottom: "1.5em",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: "center",
-                    gap: "0.75em"
-                }}>
+                <div
+                    style={{
+                        marginBottom: "1.5em",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center",
+                        gap: "0.75em"
+                    }}
+                >
                     <Button icon labelPosition="left" basic circular color="teal">
                         <Icon name="smile outline" /> Me
                     </Button>
@@ -87,24 +89,30 @@ const App = () => {
                     </Button>
                 </div>
 
-                <div style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#f1f3f5",
-                    borderRadius: "999px",
-                    padding: "0.75em 1.25em",
-                    maxWidth: "600px",
-                    width: "100%",
-                    margin: "0 auto"
-                }}>
-                    <Input
-                        placeholder="Ask me anything..."
+                <div
+                    style={{
+                        position: "relative",
+                        backgroundColor: "#f1f3f5",
+                        borderRadius: "999px",
+                        maxWidth: "600px",
+                        margin: "0 auto",
+                        display: "flex",
+                        alignItems: "center",
+                        paddingRight: "52px"
+                    }}
+                >
+                    <input
+                        type="text"
+                        placeholder="Ask me anything"
                         style={{
-                            border: "none",
-                            background: "transparent",
                             flex: 1,
-                            marginRight: "0.5em"
+                            border: "none",
+                            outline: "none",
+                            background: "transparent",
+                            padding: "0.75em 1.25em",
+                            borderRadius: "999px",
+                            fontSize: "1em",
+                            width: "100%"
                         }}
                     />
                     <Button
@@ -112,12 +120,17 @@ const App = () => {
                         circular
                         color="blue"
                         style={{
-                            boxShadow: "none",
-                            minWidth: "40px",
-                            height: "40px"
+                            position: "absolute",
+                            right: "6px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            width: "36px",
+                            height: "36px",
+                            minWidth: "36px",
+                            boxShadow: "none"
                         }}
                     >
-                        <Icon name="arrow up" />
+                        <Icon name="arrow up" style={{ margin: 0 }} />
                     </Button>
                 </div>
             </Container>
