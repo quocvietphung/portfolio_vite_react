@@ -6,13 +6,14 @@ const tags = ["AI", "Developer", "React", "42 Style", "SaaS Builder"];
 const SectionMe = () => (
     <Segment
         style={{
-            background: "linear-gradient(120deg,#f0f7fa,#e4f9ee 80%)",
+            background: "transparent",
             borderRadius: "2.2em",
             marginTop: "2em",
-            boxShadow: "0 0 40px rgba(0,0,0,0.08)",
-            padding: "2.5em 1em"
+            boxShadow: "none",
+            padding: "2.5em 1em",
+            border: "none"
         }}
-        raised
+        basic /
     >
         <Header as="h3" color="teal">About Me</Header>
         <p style={{ fontWeight: 600, marginTop: "0.5em" }}>
