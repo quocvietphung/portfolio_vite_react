@@ -81,7 +81,7 @@ const ParticlesBackground = () => {
             inset: 0,
             zIndex: 0,
             pointerEvents: "none",
-            background: "#fafcff"  // Nền trắng sạch
+            background: "#fafcff"
         }}>
             <Particles
                 id="tsparticles-background"
