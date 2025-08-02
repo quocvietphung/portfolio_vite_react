@@ -9,6 +9,7 @@ import {
     Label
 } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import ParticlesBackground from "./ParticlesBackground";
 
 // Lazy‑load the typewriter to keep the initial bundle small
 const Typewriter = lazy(() =>
@@ -218,6 +219,7 @@ const App = () => {
 
     return (
         <ChatContext.Provider value={{ state, dispatch }}>
+            <ParticlesBackground />
             <div style={{ minHeight: "100vh", backgroundColor: "#f9fafb", display: "flex", flexDirection: "column" }}>
                 <Container text textAlign="center" style={{ paddingTop: "4em", paddingBottom: "6em" }}>
                     <AvatarHeader />
