@@ -13,7 +13,7 @@ const SectionMe = () => (
             padding: "2.5em 1em",
             border: "none"
         }}
-        basic /
+        basic
     >
         <Header as="h3" color="teal">About Me</Header>
         <p style={{ fontWeight: 600, marginTop: "0.5em" }}>
